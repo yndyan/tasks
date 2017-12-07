@@ -1,0 +1,30 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-left">
+        <li *ngIf="!userSerw.checkTokenNotExpired()" >
+          <a [routerLink]="['/user/login']"><strong>Login</strong></a></li>
+        <li *ngIf="!userSerw.checkTokenNotExpired()" >
+          <a [routerLink]="['/user/register']" ><strong>Register</strong></a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <li *ngIf="userSerw.checkTokenNotExpired()" ><a (click)="onLogoutClick()" href="#"><strong>Logout</strong></a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="userSerw.checkTokenNotExpired() && !userSerw.checkUserIsAdmin()" >
+          <a [routerLink]="['/projects']"> Projects</a></li>
+        <li *ngIf="userSerw.checkTokenNotExpired() && !userSerw.checkUserIsAdmin()" >
+          <a [routerLink]="['/projects/addproject']"> </a></li>
+        <li *ngIf="userSerw.checkTokenNotExpired() && !userSerw.checkUserIsAdmin()" >
+          <a [routerLink]="['/user']">User details</a></li>
+        <li *ngIf="userSerw.checkTokenNotExpired() && !userSerw.checkUserIsAdmin()" >
+          <a [routerLink]="['/user/update_user']" >Update user</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="userSerw.checkUserIsAdmin()" ><a [routerLink]="['/admin/add-user']">Add user</a></li>
+        <li *ngIf="userSerw.checkUserIsAdmin()" ><a [routerLink]="['/admin']">Users</a></li>
+      </ul>
+     
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

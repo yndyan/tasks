@@ -1,0 +1,42 @@
+<h2 class="page-header">Update user</h2>
+
+ <div class="form-group">
+<form (submit)="onUpdateUserSubmit()">
+  <div class="form-group"  *ngFor="let key of basicArrayOfKeys">
+    <label>User {{key}}</label>
+    <input type="text" [(ngModel)]="user.basic[key]"   [ngModelOptions]="{standalone: true}" class="form-control">
+  </div>
+  <div >
+    <p><strong>User role</strong></p>
+    <label class="radio-inline"><input type="radio" name="role" value="default"  [(ngModel)]="user.basic.role" >Default</label>
+    <label class="radio-inline"><input type="radio" name="role" value="admin" [(ngModel)]="user.basic.role">Admin</label>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Submit">
+</form>
+</div>
+
+
+<!-- <div class="form-group">
+  <form (submit)="onUpdatePasswordSubmit()">
+    <div class="form-group"  >
+      <label>New password</label>
+      <input type="text" [(ngModel)]="password"  name = "password" class="form-control">
+    </div>
+    <div class="form-group"  >
+      <label>Confirm password</label>
+      <input type="text" [(ngModel)]="confirmedpassword" name = "confirmedpassword"  class="form-control">
+    </div>
+    <input type="submit" class="btn btn-primary" value="Submit">
+  </form>
+</div> -->
+
+<div class="form-group">
+  <form (submit)="onUpdatePasswordSubmit()">
+    <div class="form-group"  *ngFor="let key2 of passArrayOfKeys">
+      <label>User {{key2}}</label>
+      <input type="text" [(ngModel)]="user.pass[key2]"   [ngModelOptions]="{standalone: true}" class="form-control">
+    </div>
+   
+    <input type="submit" class="btn btn-primary" value="Submit">
+  </form>
+  </div>

@@ -1,0 +1,33 @@
+<h1> User projects list</h1>
+
+<ul class="list-group">
+    <li class="list-group-item list-group-item-danger">
+        <a (click)="showAddProject = !showAddProject"><strong> Add project </strong></a>
+      </li>
+      <li *ngIf="showAddProject" class="list-group-item list-group-item-danger">
+        <form  (submit)="onAddProjectSubmit()">
+          <div class="form-group"  *ngFor="let key of arrayOfKeys">
+            <label>Project {{key}} </label>
+            <input type="text" [(ngModel)]="project[key]" [ngModelOptions]="{standalone: true}" class="form-control">
+          </div>
+          <input type="submit" class="btn btn-primary" value="Submit">
+        </form>
+        </li>
+  <div *ngFor="let project of projects">
+    <li class="list-group-item list-group-item-info" >
+      <a [routerLink]="['/projects/'+project._id]"> <strong> Project name :  {{project.name}}</strong>  </a>
+      <button type="button" class="btn btn-danger pull-right" (click)="deleteProject(project._id)"> <span class="glyphicon glyphicon-trash"></span> </button>
+    </li>
+    <li class="list-group-item list-group-item-warning" *ngFor="let task of project.task">
+        Task : {{task.taskName}}
+        <div class="pull-right">
+          
+          <div *ngIf="task.done;else other_content"> Done: <span class="glyphicon glyphicon-thumbs-up"></span>  </div>
+          <ng-template #other_content>  Done: <span class="glyphicon glyphicon-thumbs-down"></span></ng-template>
+      </div>
+    </li>
+  </div>
+  
+</ul>
+
+

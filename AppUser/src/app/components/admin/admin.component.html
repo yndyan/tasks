@@ -1,0 +1,31 @@
+<div>
+  <table class="table table-striped table-hover">
+    <thead class="thead">
+  
+      <tr class="success" >
+          <th class="text-center" *ngFor="let key of arrayOfKeys" >{{key}}</th>
+          <th class="text-center">update</th>
+          <th class="text-center">delete</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td  class="text-center"  *ngFor="let key of arrayOfKeys">
+                <a [routerLink]="['/admin/'+user._id]">
+                  {{user[key]}}
+                </a>
+            </td>
+            <td  class="text-center">
+                <button class="btn btn-warning" type="button btn-warning">
+                    <a [routerLink]="['/admin/'+user._id+'/update']"> <span class="glyphicon glyphicon-edit"></span></a>
+                </button>
+            </td>
+            <td class="text-center">
+                <button type="button" class="btn btn-danger" (click)="deleteUser(user._id)"> <span class="glyphicon glyphicon-trash"></span> </button>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+  </div>
+  

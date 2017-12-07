@@ -1,0 +1,64 @@
+<div class="page-header">
+  <h1>Project details</h1>
+</div>
+
+<div>
+  <div>
+    <ul  class="list-group">
+      <li class="list-group-item list-group-item-success" *ngFor="let key of projArrayOfKeys" >
+        <p class="text-capitalize">
+          <strong>{{key}} </strong> : {{project[key]}}
+        </p>
+      </li>
+      <button *ngIf="!showUpdateProject" class="btn btn-warning " type="button">
+        <a (click)="showUpdateProject = !showUpdateProject"> <strong> Edit <span class="glyphicon glyphicon-edit"></span></strong></a>
+      </button> 
+    </ul>
+    <form *ngIf="showUpdateProject" (submit)="updateProject()">
+      <div class="form-group"  *ngFor="let key of projArrayOfKeys">
+        <label>Project {{key}}</label>
+        <input type="text" [(ngModel)]="project[key]"   [ngModelOptions]="{standalone: true}" class="form-control">
+      </div>
+      <input type="submit" class="btn btn-primary" value="Submit">
+    </form>
+  </div>
+  <div>
+  
+    <ul class="list-group">
+    <li class="list-group-item list-group-item-warning" >
+        <a (click)="showAddTask = !showAddTask"><strong> ADD TASK </strong></a>
+      </li>
+      <li *ngIf="showAddTask" class="list-group-item list-group-item-warning" >
+          <form (submit)="addTask()">
+              <div class="form-group" *ngFor="let key of newTaskArrayOfKeys" >
+                <label>{{key}}</label>
+                <input type="text" [(ngModel)]="newTask[key]" [ngModelOptions]="{standalone: true}" class="form-control">
+              </div>
+              <input type="submit" class="btn btn-primary" value="Submit">
+            </form>
+      </li>
+      <div *ngFor="let task of tasks ">
+        <li class="list-group-item list-group-item-warning" >
+          Task name : <strong> {{task.taskName}} </strong> 
+          <button type="button" class="btn btn-danger pull-right" (click)="deleteTask(task._id)"> <span class="glyphicon glyphicon-trash"></span> </button>
+          <input type="checkbox" [(ngModel)]="task.done" (ngModelChange)="updateTask(task)" />
+          <button  *ngIf="!task.showTaskUpdate"  class="btn btn-warning pull-right" type="button">
+            <a (click)="task.showTaskUpdate = !task.showTaskUpdate"><strong> <span class="glyphicon glyphicon-edit"></span></strong></a>
+          </button>
+          
+        </li>
+        <li *ngIf="task.showTaskUpdate"  class="list-group-item list-group-item-warning" >
+          <form (submit)="updateTask(task)">
+              <div class="form-group" *ngFor="let key of newTaskArrayOfKeys" >
+                <label>{{key}}</label>
+                <input type="text" [(ngModel)]="task[key]" [ngModelOptions]="{standalone: true}" class="form-control">
+              </div>
+              <input type="submit" class="btn btn-primary" value="Submit">
+            </form>
+        </li>
+      </div>
+
+      
+    </ul>
+  </div>
+</div>
