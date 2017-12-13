@@ -15,23 +15,33 @@ export class TasksService {
   ) {
   }
   getTasks(gaytewayId){
-    return this.http.get(`${environment.apiEndpoint}/projects/${gaytewayId}/tasks`,this.usrSerw.generateHeaders(true)).map(res => res.json());
+    return this.http.get(`${environment.apiEndpoint}/projects/${gaytewayId}/tasks`,this.usrSerw.generateHeaders(true))
+    .map(res => res.json())
+    .catch(res => Observable.throw(res.json()));
   }
 
   getTasksById(gaytewayId,taskId){
-    return this.http.get(`${environment.apiEndpoint}/projects/${gaytewayId}/tasks/${taskId}`,this.usrSerw.generateHeaders(true)).map(res => res.json());
+    return this.http.get(`${environment.apiEndpoint}/projects/${gaytewayId}/tasks/${taskId}`,this.usrSerw.generateHeaders(true))
+    .map(res => res.json())
+    .catch(res => Observable.throw(res.json()));
   }
 
   deleteTasksById(gaytewayId,taskId){
-    return this.http.delete(`${environment.apiEndpoint}/projects/${gaytewayId}/tasks/${taskId}`,this.usrSerw.generateHeaders(true)).map(res => res.json());
+    return this.http.delete(`${environment.apiEndpoint}/projects/${gaytewayId}/tasks/${taskId}`,this.usrSerw.generateHeaders(true))
+    .map(res => res.json())
+    .catch(res => Observable.throw(res.json()));
   }
   addNewTask(gaytewayId,newTask){
-      return this.http.post(`${environment.apiEndpoint}/projects/${gaytewayId}/tasks`, newTask,this.usrSerw.generateHeaders(true)).map(res => res.json());
+      return this.http.post(`${environment.apiEndpoint}/projects/${gaytewayId}/tasks`, newTask,this.usrSerw.generateHeaders(true))
+      .map(res => res.json())
+      .catch(res => Observable.throw(res.json()));
   }
 
 
   updateTask(projectId, taskId,updateTask){
-    return this.http.put(`${environment.apiEndpoint}/projects/${projectId}/tasks/${taskId}`, updateTask ,this.usrSerw.generateHeaders(true)).map(res => res.json());
+    return this.http.put(`${environment.apiEndpoint}/projects/${projectId}/tasks/${taskId}`, updateTask ,this.usrSerw.generateHeaders(true))
+      .map(res => res.json())
+      .catch(res => Observable.throw(res.json()));
   }
 
 }

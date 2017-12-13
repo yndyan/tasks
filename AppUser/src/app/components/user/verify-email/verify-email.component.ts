@@ -31,7 +31,7 @@ export class VerifyEmailComponent implements OnInit {
           this.router.navigate(['user/login']);
         },
         err =>{
-          this.flashMsg.show(err.json().msg, {
+          this.flashMsg.show(err.msg, {
             classes: ['alert', 'alert-warning'], // You can pass as many classes as you need
             timeout: 2500, // Default is 3000
           });

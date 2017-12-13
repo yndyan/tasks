@@ -32,7 +32,7 @@ export class AdminComponent implements OnInit {
         this.users = data.users;
       },
       err =>{
-        this.flashMsg.show(err.json().msg, {
+        this.flashMsg.show(err.msg, {
           classes: ['alert', 'alert-warning'], // You can pass as many classes as you need
           timeout: 2500, // Default is 3000
         });
@@ -51,7 +51,7 @@ export class AdminComponent implements OnInit {
         this.subToUser();
       },
       err =>{
-        this.flashMsg.show(err.json().msg, {
+        this.flashMsg.show(err.msg, {
           classes: ['alert', 'alert-warning'], // You can pass as many classes as you need
           timeout: 2500, // Default is 3000
         });

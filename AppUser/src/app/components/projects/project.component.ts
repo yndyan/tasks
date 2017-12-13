@@ -36,7 +36,7 @@ export class ProjectsComponent implements OnInit {
         this.projects = data.projects;
       },
       err =>{
-        this.flashMsg.show(err.json().msg, {
+        this.flashMsg.show(err.msg, {
           classes: ['alert', 'alert-warning'], // You can pass as many classes as you need
           timeout: 2500, // Default is 3000
         });
@@ -56,7 +56,7 @@ export class ProjectsComponent implements OnInit {
         this.subToPr();//this refresh page on delete
       },
       err =>{
-        this.flashMsg.show(err.json().msg, {
+        this.flashMsg.show(err.msg, {
           classes: ['alert', 'alert-warning'], // You can pass as many classes as you need
           timeout: 2500, // Default is 3000
         });
@@ -80,7 +80,7 @@ export class ProjectsComponent implements OnInit {
         });
       },
       err =>{
-        this.flashMsg.show(err.json().msg, {
+        this.flashMsg.show(err.msg, {
           classes: ['alert', 'alert-warning'], // You can pass as many classes as you need
           timeout: 2500, // Default is 3000
         });

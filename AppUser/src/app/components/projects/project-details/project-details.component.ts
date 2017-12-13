@@ -54,7 +54,7 @@ export class ProjectDetailsComponent implements OnInit {
         this.projArrayOfKeys = Object.keys(this.project);
       },
       err =>{
-        this.flashMsg.show(err.json().msg, {
+        this.flashMsg.show(err.msg, {
           classes: ['alert', 'alert-warning'],
           timeout: 2500, // Default is 3000
         });
@@ -73,7 +73,7 @@ export class ProjectDetailsComponent implements OnInit {
         this.subToProjectDetails();
       },
       err =>{
-        this.flashMsg.show(err.json().msg, {
+        this.flashMsg.show(err.msg, {
           classes: ['alert', 'alert-warning'],
           timeout: 2500, // Default is 3000
         });
@@ -94,7 +94,7 @@ export class ProjectDetailsComponent implements OnInit {
         
       },
       err =>{
-        this.flashMsg.show(err.json().msg, {
+        this.flashMsg.show(err.msg, {
           classes: ['alert', 'alert-warning'],
           timeout: 2500, // Default is 3000
         });
@@ -124,7 +124,7 @@ export class ProjectDetailsComponent implements OnInit {
         });
       },
       err =>{
-        this.flashMsg.show(err.json().msg, {
+        this.flashMsg.show(err.msg, {
           classes: ['alert', 'alert-warning'],
           timeout: 2500, // Default is 3000
         });
@@ -142,7 +142,7 @@ export class ProjectDetailsComponent implements OnInit {
         this.subToTasks();
       },
       err =>{
-        this.flashMsg.show(err.json().msg, {
+        this.flashMsg.show(err.msg, {
           classes: ['alert', 'alert-warning'],
           timeout: 2500, // Default is 3000
         });

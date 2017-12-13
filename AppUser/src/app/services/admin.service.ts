@@ -13,27 +13,39 @@ export class AdminService {
 
   addUser(newUser){
     console.log(newUser);
-      return this.http.post(environment.apiEndpoint+'/admin/users', newUser,this.userSrv.generateHeaders(true)).map(res => res.json());
+      return this.http.post(environment.apiEndpoint+'/admin/users', newUser,this.userSrv.generateHeaders(true))
+      .map(res => res.json())
+      .catch(res => Observable.throw(res.json()));
   }
 
   getUsers(){
-    return this.http.get(environment.apiEndpoint+'/admin/users/',this.userSrv.generateHeaders(true)).map(res => res.json());
+    return this.http.get(environment.apiEndpoint+'/admin/users/',this.userSrv.generateHeaders(true))
+      .map(res => res.json())
+      .catch(res => Observable.throw(res.json()));
   }
 
   getUser(user_id){
-    return this.http.get(environment.apiEndpoint+'/admin/users/'+user_id,this.userSrv.generateHeaders(true)).map(res => res.json());
+    return this.http.get(environment.apiEndpoint+'/admin/users/'+user_id,this.userSrv.generateHeaders(true))
+      .map(res => res.json())
+      .catch(res => Observable.throw(res.json()));
   }
 
   updateUser(userId,updateUser){
-    return this.http.put(`${environment.apiEndpoint}/admin/users/${userId}`, updateUser,this.userSrv.generateHeaders(true)).map(res => res.json());
+    return this.http.put(`${environment.apiEndpoint}/admin/users/${userId}`, updateUser,this.userSrv.generateHeaders(true))
+      .map(res => res.json())
+      .catch(res => Observable.throw(res.json()));
   }
 
   updateUserPassword(userId,password){
-    return this.http.put(`${environment.apiEndpoint}/admin/users/${userId}/updatepassword`,password ,this.userSrv.generateHeaders(true)).map(res => res.json());
+    return this.http.put(`${environment.apiEndpoint}/admin/users/${userId}/updatepassword`,password ,this.userSrv.generateHeaders(true))
+      .map(res => res.json())
+      .catch(res => Observable.throw(res.json()));
   }
 
   deleteUserById(user_id){
-    return this.http.delete(environment.apiEndpoint+'/admin/users/'+user_id, this.userSrv.generateHeaders(true)).map(res => res.json());
+    return this.http.delete(environment.apiEndpoint+'/admin/users/'+user_id, this.userSrv.generateHeaders(true))
+      .map(res => res.json())
+      .catch(res => Observable.throw(res.json()));
   }
 
 }

@@ -12,15 +12,22 @@ export class UserService {
   constructor( private http: Http ) { }
 
   addUser(newUser){
-    return this.http.post(environment.apiEndpoint+'/user', newUser,this.generateHeaders(false)).map(res => res.json());
+    return this.http.post(environment.apiEndpoint+'/user', newUser,this.generateHeaders(false))
+    .map(res=> res.json())
+    .catch(res => Observable.throw(res.json()));
   }
 
   authUser(userData){
-    return this.http.post(environment.apiEndpoint+'/user/auth',userData,this.generateHeaders(false)).map(res=>res.json());
+    return this.http.post(environment.apiEndpoint+'/user/auth',userData,this.generateHeaders(false))
+    .map(res=>res.json())
+    .catch(res => Observable.throw(res.json()));
+    
   }
 
   getUser(){
-    return this.http.get(environment.apiEndpoint+'/user/profile',this.generateHeaders(true)).map(res => res.json());
+    return this.http.get(environment.apiEndpoint+'/user/profile',this.generateHeaders(true))
+    .map(res => res.json())
+    .catch(res => Observable.throw(res.json()));
   }
 
   storeUserData(token, role){
@@ -53,15 +60,21 @@ export class UserService {
   }
 
   updateUser(updateUser){
-    return this.http.put(`${environment.apiEndpoint}/user/update`, updateUser,this.generateHeaders(true)).map(res => res.json());
+    return this.http.put(`${environment.apiEndpoint}/user/update`, updateUser,this.generateHeaders(true))
+      .map(res => res.json())
+      .catch(res => Observable.throw(res.json()));
   }
 
   updateUserPassword(password){
-    return this.http.put(`${environment.apiEndpoint}/user/password`,password,this.generateHeaders(true)).map(res => res.json());
+    return this.http.put(`${environment.apiEndpoint}/user/password`,password,this.generateHeaders(true))
+      .map(res => res.json())
+      .catch(res => Observable.throw(res.json()));
   }
 
   verifyEmail(verifyCode){
-    return this.http.post(`${environment.apiEndpoint}/user/verifyemail`, verifyCode, this.generateHeaders(false)).map(res => res.json());
+    return this.http.post(`${environment.apiEndpoint}/user/verifyemail`, verifyCode, this.generateHeaders(false))
+      .map(res => res.json())
+      .catch(res => Observable.throw(res.json()));
   }
 
 
